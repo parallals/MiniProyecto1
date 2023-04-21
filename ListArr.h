@@ -5,24 +5,25 @@
 class ListArr{
     private:
         struct Node(){ //Nodo con el array
-            int b;
-            int* vector;
-            int usado;
-            Node* next;
-            Node(int b, int* vector, int usado, Node* next){
-                this->b = b; this->vector = vector; this->usado = usado; this-> next = next;
+            int b; //capacidad maxima del array
+            int* array; //array
+            int usado; //cantidad usada
+            Node(int b, int* array, int usado){
+                this->b = b; this->array = array; this->usado = usado;
             }
+            int counter = 0; //contador, pero por si acaso
         }
         struct Node2(){ //Nodo de direcciones izquierda y derecha
-            Node2* right;
-            Node2* left;
-            Node2(Node2* left,Node2* right,){
-                this->left = left;this->right = right;
+            Node2* right; //Puntero a Nodo de izquierda, que contiene a los otros nodos
+            Node2* left; //Puntero a Nodo de Derecha, que contiene a los otros nodos
+            Node* r; //Puntero a Nodo con array de Derecha 
+            Node* l; //Puntero a Nodo con array de Izquierda
+            Node2(Node2* left,Node2* right,/* Node* r, Node* l*/){ //No estoy muy segura si deben ir en el constructor, pero poner ahí por si acaso
+                this->left = left;this->right = right;//this->r = r; this->l = l;
             }            
         }
-        Node2* actual;
-        Node* T;
-        int counter;
+        Node2* actual; //Puntero a Nodo actual
+        Node* T; //Puntero a Top de Nodo
 
     public:
         virtual int size() = 0; //Retorna la cantidad de elementos almacenados en el ListArr
