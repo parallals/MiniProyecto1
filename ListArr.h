@@ -4,7 +4,7 @@
 
 class ListArr{
     private:
-        struct Node(){
+        struct Node(){ //Nodo con el array
             int b;
             int* vector;
             int usado;
@@ -13,6 +13,14 @@ class ListArr{
                 this->b = b; this->vector = vector; this->usado = usado; this-> next = next;
             }
         }
+        struct Node2(){ //Nodo de direcciones izquierda y derecha
+            Node2* right;
+            Node2* left;
+            Node2(Node2* left,Node2* right,){
+                this->left = left;this->right = right;
+            }            
+        }
+        Node2* actual;
         Node* T;
         int counter;
 
@@ -23,6 +31,8 @@ class ListArr{
         virtual void insert(int v, int i)=0; //Inserta un nuevo valor v en el índice i del ListArr.
         virtual void print()=0; //Imprime por pantalla todos los valores almacenados en el ListArr.
         virtual bool find(int v)=0; //Busca en el ListArr si el valor v se encuentra almacenado.
+        virtual int delete_left()=0: //Elimina y retorna el elemento que está a la izquierda del ListArr.   
+        virtual int delete_right()=0: //Elimina y retorna el elemento que está a la derecha del ListArr.             
 };
 #endif
 
