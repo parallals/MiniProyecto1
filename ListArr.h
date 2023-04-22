@@ -8,10 +8,10 @@ class ListArr{
             int n;                  // -BORRAR- Cantidad usada.
             int* array;             // -BORRAR- Array dinamico.
             DataNode* next;
-            DataNode(int N, int n, int* array, DataNode* next){
+            DataNode(int N, DataNode* next){
                 this->N = N;
-                this->array = array;
-                this->n = n;
+                n = 0;
+                array = new int[N];
                 this->next = next;
             }
         };
@@ -32,22 +32,24 @@ class ListArr{
             }            
         };
         SummaryNode* root;          // -BORRAR- Puntero a Nodo root.
-        int cantidadNodos = 8;      // -BORRAR- numero de nodos de datos.
-        void crearArbol(int iterations, SummaryNode* nodo, int indData, DataNode* T, int tamArr);
+        int cantNod;      // -BORRAR- numero de nodos de datos.
+        void crearArbol(int iterations, SummaryNode* nodo, DataNode* T, int tamArr);
         void borrarArbol(int iterations, SummaryNode* nodo);
         void MoveRight(int indice, DataNode* nodo);
+        void ActSummaryNode(int iterations, SummaryNode* nodo);
+        DataNode* SearchSummaryNode(int iterations, int indice, SummaryNode* nodo);
 
     public:
-        virtual int size() = 0;                      // Retorna la cantidad de elementos almacenados en el ListArr.
-        virtual bool is_empty() = 0;                  // Retorna true si ListArr esta vacia, caso contrario, false.
-        virtual void insert_left(int data) = 0;      // Inserta un nuevo valor data a la izquierda del ListArr. Equivalentemente, inserta el valor data en el índice 0.
-        virtual void insert_right(int data) = 0;     // Inserta un nuevo valor data a la derecha del ListArr. Equivalentemente, inserta el valor data en el índice size()-1.
-        virtual void insert(int data, int i) = 0;    // Inserta un nuevo valor data en el índice i del ListArr.
-        virtual void print() = 0;                    // Imprime por pantalla todos los valores almacenados en el ListArr.
-        virtual bool find(int data) = 0;             // Busca en el ListArr si el valor data se encuentra almacenado.
-        virtual int delete_left() = 0;               // Elimina y retorna el elemento que está a la izquierda del ListArr.   
-        virtual int delete_right() = 0;              // Elimina y retorna el elemento que está a la derecha del ListArr.             
-        ListArr();
+        int size();                      // Retorna la cantidad de elementos almacenados en el ListArr.
+        bool is_empty();                 // Retorna true si ListArr esta vacia, caso contrario, false.
+        void insert_left(int data);      // Inserta un nuevo valor data a la izquierda del ListArr. Equivalentemente, inserta el valor data en el índice 0.
+        void insert_right(int data);     // Inserta un nuevo valor data a la derecha del ListArr. Equivalentemente, inserta el valor data en el índice size()-1.
+        void insert(int data, int i);    // Inserta un nuevo valor data en el índice i del ListArr.
+        void print();                    // Imprime por pantalla todos los valores almacenados en el ListArr.
+        bool find(int data);             // Busca en el ListArr si el valor data se encuentra almacenado.
+        int delete_left();               // Elimina y retorna el elemento que está a la izquierda del ListArr.   
+        int delete_right();              // Elimina y retorna el elemento que está a la derecha del ListArr.             
+        ListArr(int tamArr, int cantNod);
         ~ListArr();
 };
 

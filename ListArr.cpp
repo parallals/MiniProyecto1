@@ -1,15 +1,16 @@
 #include "ListArr.h"
+#include <iostream>
 
-void ListArr::crearArbol(int iterations, SummaryNode* nodo, int indData, DataNode* T, int tamArr){
+void ListArr::crearArbol(int iterations, SummaryNode* nodo, DataNode* T, int tamArr){
     if(iterations > 2){
         nodo->left = new SummaryNode(iterations*tamArr/2);
         nodo->right = new SummaryNode(iterations*tamArr/2);
-        crearArbol(iterations/2, nodo->left, indData, T, tamArr);
-        crearArbol(iterations/2, nodo->right, indData+(iterations/2), T, tamArr);
-    } else {
-        for(int i=0 ; i<indData ; i++){
+        crearArbol(iterations/2, nodo->left, T, tamArr);
+        for(int i=0 ; i<iterations/2 ; i++){
             T = T->next;
         }
+        crearArbol(iterations/2, nodo->right, T, tamArr);
+    } else {
         nodo->dataLeft = T;
         nodo->dataRight = T->next;
     }
@@ -20,6 +21,8 @@ void ListArr::borrarArbol(int iterations, SummaryNode* nodo){
         borrarArbol(iterations/2, nodo->left);
         borrarArbol(iterations/2, nodo->right);
     } else {
+        delete[] nodo->dataLeft->array;
+        delete[] nodo->dataRight->array;
         delete nodo->dataLeft;
         delete nodo->dataRight;
     }
@@ -27,28 +30,58 @@ void ListArr::borrarArbol(int iterations, SummaryNode* nodo){
 }
 
 void ListArr::MoveRight(int indice, DataNode* nodo){
-    if(nodo->n == nodo->N){
+    if(nodo->n >= nodo->N){
         MoveRight(0, nodo->next);
-        nodo->next->array[0] = nodo->array[nodo->N-1];
+        nodo->next->array[0] = nodo->array[nodo->n-1];
+        nodo->next->n++;
         nodo->n--;
-    }
+    } 
     for(int i=0 ; i<nodo->n-indice ; i++){
         nodo->array[nodo->n-i] = nodo->array[nodo->n-i-1];
+        std::cout << "flag" << std::endl;
     }
 }
 
-ListArr::ListArr(){
-    DataNode* T = nullptr;
-        int tamArr = 6;     // -BORRAR- tamanio de array por nodo.
-    for(int i=0 ; i<cantidadNodos ; i++){
-        T = new DataNode(tamArr, 0, new int[tamArr], T) ;
+void ListArr::ActSummaryNode(int iterations, SummaryNode* nodo){
+    if(iterations > 2){
+        ActSummaryNode(iterations/2, nodo->left);
+        ActSummaryNode(iterations/2, nodo->right);
+        nodo->n = nodo->left->n + nodo->right->n;
+    } else {
+        nodo->n = nodo->dataLeft->n + nodo->dataRight->n;
+    } 
+}
+
+ListArr::DataNode* ListArr::SearchSummaryNode(int iterations, int indice, SummaryNode* nodo){
+    if(iterations > 2){
+        if(indice <= nodo->left->n){
+            return SearchSummaryNode(iterations/2, indice, nodo->left);
+        } else {
+            return SearchSummaryNode(iterations/2, indice-nodo->left->n, nodo->right);
+        }
+    } else {
+        if(indice <= nodo->dataLeft->n){
+            MoveRight(indice, nodo->dataLeft);
+            return nodo->dataLeft;
+        } else {
+            MoveRight(indice-nodo->dataRight->n, nodo->dataRight);
+            return nodo->dataRight;
+        }
     }
-    root = new SummaryNode(cantidadNodos*tamArr);
-    crearArbol(cantidadNodos, root, 0, T, tamArr);
+}
+
+ListArr::ListArr(int tamArr, int cantNod){
+    this->cantNod = cantNod;
+    DataNode* T = nullptr;
+    for(int i=0 ; i<cantNod ; i++){
+        T = new DataNode(tamArr, T) ;
+    }
+    root = new SummaryNode(cantNod*tamArr);
+    crearArbol(cantNod, root, T, tamArr);
 }
 
 ListArr::~ListArr(){
-    borrarArbol(cantidadNodos, root);
+    borrarArbol(cantNod, root);
 }
 
 int ListArr::size(){
@@ -63,16 +96,12 @@ bool ListArr::is_empty(){
 }
 
 void ListArr::insert_left(int data){
-    int i = cantidadNodos;
-    SummaryNode* sumnodo = root;
-    while(i > 2){
-        sumnodo = sumnodo->left;
-        i = i/2;
+    if(root->n < root->N){
+        DataNode* datanodo = SearchSummaryNode(cantNod, 0, root);
+        datanodo->array[0] = data;
+        datanodo->n++;
+        ActSummaryNode(cantNod, root);
     }
-    DataNode* datanodo = sumnodo->dataLeft;
-    MoveRight(0, datanodo);
-    datanodo->array[0] = data;
-    datanodo->n++;
 }
 
 void ListArr::insert_right(int data){
@@ -88,5 +117,5 @@ void ListArr::print(){
 }
 
 bool ListArr::find(int data){
-
+ return true;
 }
