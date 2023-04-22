@@ -76,7 +76,19 @@ void ListArr::insert_left(int data){
 }
 
 void ListArr::insert_right(int data){
-
+    int i = cantidadNodos; //cantidad de nodos = 8
+    SummaryNode* sumnodo = root;
+    while(i > 2){ 
+        sumnodo = sumnodo->right;
+        i = i/2; //llegar a la última rama
+    }
+    DataNode* datanodo = sumnodo->dataRight;
+    if(datanodo->n != datanodo->N){
+        datanodo->array[n] = data;
+    }
+    else{
+        cout<<"Is full"<<endl;
+    }
 }
 
 void ListArr::insert(int data, int i){
