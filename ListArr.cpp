@@ -73,7 +73,7 @@ void ListArr::insertInDataNode(int iterations, int indice, int data, SummaryNode
 
 ListArr::DataNode* ListArr::getFirstDataNode(){
     SummaryNode* auxnodo = root;
-    int i = cantNod;
+    int i = cantNodos;
     while(i > 2){
         auxnodo = auxnodo->left;
         i = i/2;
@@ -82,17 +82,21 @@ ListArr::DataNode* ListArr::getFirstDataNode(){
 }
 
 ListArr::ListArr(int tamArr, int cantNod){
-    this->cantNod = cantNod;
+    int pow = 2;
+    while(pow < cantNod){
+        pow = pow*2;
+    }
+    this->cantNodos = pow;
     DataNode* T = nullptr;
-    for(int i=0 ; i<cantNod ; i++){
+    for(int i=0 ; i<cantNodos ; i++){
         T = new DataNode(tamArr, T) ;
     }
-    root = new SummaryNode(cantNod*tamArr);
-    crearArbol(cantNod, root, T, tamArr);
+    root = new SummaryNode(cantNodos*tamArr);
+    crearArbol(cantNodos, root, T, tamArr);
 }
 
 ListArr::~ListArr(){
-    borrarArbol(cantNod, root);
+    borrarArbol(cantNodos, root);
 }
 
 int ListArr::size(){
@@ -108,31 +112,31 @@ bool ListArr::is_empty(){
 
 void ListArr::insert_left(int data){
     if(root->n < root->N){
-        insertInDataNode(cantNod, 0, data, root);
-        ActSummaryNode(cantNod, root);
+        insertInDataNode(cantNodos, 0, data, root);
+        ActSummaryNode(cantNodos, root);
     }
     // Tirar Excepcion.
 }
 
 void ListArr::insert_right(int data){
     if(root->n < root->N){
-        insertInDataNode(cantNod, root->n, data, root);
-        ActSummaryNode(cantNod, root);
+        insertInDataNode(cantNodos, root->n, data, root);
+        ActSummaryNode(cantNodos, root);
     }
     // Tirar Excepcion.
 }
 
 void ListArr::insert(int data, int i){
     if(root->n < root->N){
-        insertInDataNode(cantNod, i, data, root);
-        ActSummaryNode(cantNod, root);
+        insertInDataNode(cantNodos, i, data, root);
+        ActSummaryNode(cantNodos, root);
     }
     // Tirar Excepcion.
 }
 
 void ListArr::print(){
     DataNode* nodo = getFirstDataNode();
-    for(int i = 0; i<cantNod ; ++i){
+    for(int i = 0; i<cantNodos ; ++i){
         for(int j = 0; j<nodo->n ; ++j){
             std::cout << nodo->array[j] << std::endl;
         }
@@ -142,7 +146,7 @@ void ListArr::print(){
 
 bool ListArr::find(int data){
     DataNode* nodo = getFirstDataNode();
-    for(int i = 0; i<cantNod ; ++i){
+    for(int i = 0; i<cantNodos ; ++i){
         for(int j = 0; j<nodo->n;++j){
             if(nodo->array[j] == data){
                 return true;
