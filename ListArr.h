@@ -37,7 +37,7 @@ class ListArr{
         void borrarArbol(int iterations, SummaryNode* nodo);
         void MoveRight(int indice, DataNode* nodo);
         void ActSummaryNode(int iterations, SummaryNode* nodo);
-        DataNode* SearchSummaryNode(int iterations, int indice, SummaryNode* nodo);
+        void insertInDataNode(int iterations, int indice, int data, SummaryNode* nodo);
 
     public:
         int size();                      // Retorna la cantidad de elementos almacenados en el ListArr.

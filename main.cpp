@@ -17,5 +17,6 @@ int main(){
 
     if(list1.is_empty() == false) cout << "No vacio" << endl;
     else cout << "Vacio" << endl;
+    list1.print();
     return 0; 
 }

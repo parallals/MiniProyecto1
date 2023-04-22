@@ -38,7 +38,6 @@ void ListArr::MoveRight(int indice, DataNode* nodo){
     } 
     for(int i=0 ; i<nodo->n-indice ; i++){
         nodo->array[nodo->n-i] = nodo->array[nodo->n-i-1];
-        std::cout << "flag" << std::endl;
     }
 }
 
@@ -52,20 +51,22 @@ void ListArr::ActSummaryNode(int iterations, SummaryNode* nodo){
     } 
 }
 
-ListArr::DataNode* ListArr::SearchSummaryNode(int iterations, int indice, SummaryNode* nodo){
+void ListArr::insertInDataNode(int iterations, int indice, int data, SummaryNode* nodo){
     if(iterations > 2){
         if(indice <= nodo->left->n){
-            return SearchSummaryNode(iterations/2, indice, nodo->left);
+            return insertInDataNode(iterations/2, indice, data, nodo->left);
         } else {
-            return SearchSummaryNode(iterations/2, indice-nodo->left->n, nodo->right);
+            return insertInDataNode(iterations/2, indice-nodo->left->n, data, nodo->right);
         }
     } else {
         if(indice <= nodo->dataLeft->n){
-            MoveRight(indice, nodo->dataLeft);
-            return nodo->dataLeft;
+            MoveRight(indice, nodo->dataLeft);    
+            nodo->dataLeft->array[indice] = data;
+            nodo->dataLeft->n++;
         } else {
-            MoveRight(indice-nodo->dataRight->n, nodo->dataRight);
-            return nodo->dataRight;
+            MoveRight(indice-nodo->dataRight->n, nodo->dataRight);    
+            nodo->dataRight->array[indice-nodo->dataRight->n] = data;
+            nodo->dataRight->n++;
         }
     }
 }
@@ -97,27 +98,26 @@ bool ListArr::is_empty(){
 
 void ListArr::insert_left(int data){
     if(root->n < root->N){
-        DataNode* datanodo = SearchSummaryNode(cantNod, 0, root);
-        datanodo->array[0] = data;
-        datanodo->n++;
+        insertInDataNode(cantNod, 0, data, root);
         ActSummaryNode(cantNod, root);
     }
+    // Tirar Excepcion.
 }
 
 void ListArr::insert_right(int data){
 
     SummaryNode* sumnodo = root;
-    int i = sumnodo->N;; //cantidad de nodos = 8    
+    int i = cantNod;   
     while(i > 2){ 
         sumnodo = sumnodo->right;
         i = i/2; //llegar a la última rama
     }
     DataNode* datanodo = sumnodo->dataRight;
     if(datanodo->n != datanodo->N){
-        datanodo->array[n] = data;
+        datanodo->array[datanodo->n] = data;
     }
     else{
-        cout<<"Is full"<<endl;
+        std::cout << "Is full" << std::endl;
     }
 }
 
@@ -127,15 +127,15 @@ void ListArr::insert(int data, int i){
 
 void ListArr::print(){
     SummaryNode* sumnodo = root;
-    int i = sumnodo->N;;
+    int i = cantNod;
     while(i > 2){
         sumnodo = sumnodo->left;
         i = i/2;
     }
     DataNode* datanodo = sumnodo->dataLeft;
-    for(int i = 0; i<sumnodo->N;; ++i){
+    for(int i = 0; i<sumnodo->N ; ++i){
         for(int j = 0; j<datanodo->n;++j){
-            cout<<" "<<datanodo->array[j];
+            std::cout << " " << datanodo->array[j] << std::endl;
             }
         datanodo = datanodo->next;
     }
@@ -150,7 +150,7 @@ bool ListArr::find(int data){
         i = i/2;
     }
     DataNode* datanodo = sumnodo->dataLeft;
-    for(int i = 0; i<sumnodo->N;; ++i){
+    for(int i = 0; i<sumnodo->N ; ++i){
         for(int j = 0; j<datanodo->N;++j){
             if(datanodo->array[j] == data){
                 return true;
