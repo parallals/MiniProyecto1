@@ -12,7 +12,18 @@ void ListArr::crearArbol(int iterations, SummaryNode* nodo, int indData, DataNod
         }
         nodo->dataLeft = T;
         nodo->dataRight = T->next;
+    }
+}
 
+void ListArr::borrarArbol(int iterations, SummaryNode* nodo){
+    if(iterations > 2){
+        borrarArbol(iterations/2, nodo->left);
+        borrarArbol(iterations/2, nodo->right);
+        delete nodo;
+    } else {
+        delete nodo->dataLeft;
+        delete nodo->dataRight;
+        delete nodo;
     }
 }
 
@@ -23,5 +34,9 @@ ListArr::ListArr(){
     }
     root = new SummaryNode(cantidadNodos*tam);
     crearArbol(cantidadNodos, root, 0, T);
-
 }
+
+ListArr::~ListArr(){
+    borrarArbol(cantidadNodos, root);
+}
+

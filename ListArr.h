@@ -20,9 +20,9 @@ class ListArr{
             int n;                  // -BORRAR- Cantidad usada.
             SummaryNode* right;     // -BORRAR- Puntero a Nodo de izquierda, que contiene a los otros nodos.
             SummaryNode* left;      // -BORRAR- Puntero a Nodo de Derecha, que contiene a los otros nodos.
-            DataNode* dataLeft;            // -BORRAR- Puntero a Nodo con array de Izquierda.
-            DataNode* dataRight;            // -BORRAR- Puntero a Nodo con array de Derecha.
-            SummaryNode(int N){ // -BORRAR- En caso de no haber algun node se asigna Nullptr.
+            DataNode* dataLeft;     // -BORRAR- Puntero a Nodo con array de Izquierda.
+            DataNode* dataRight;    // -BORRAR- Puntero a Nodo con array de Derecha.
+            SummaryNode(int N){     // -BORRAR- En caso de no haber algun node se asigna Nullptr.
                 this->N = N;
                 n = 0;
                 right = nullptr;
@@ -31,10 +31,11 @@ class ListArr{
                 dataRight = nullptr;
             }            
         };
-        int cantidadNodos = 8; // numero de nodos de datos.
-        int tam = 6; // tamanio de array por nodo.
-        SummaryNode* root;    // -BORRAR- Puntero a Nodo root.
+        SummaryNode* root;          // -BORRAR- Puntero a Nodo root.
+        int cantidadNodos = 8;      // -BORRAR- numero de nodos de datos.
+        int tam = 6;                // -BORRAR- tamanio de array por nodo.
         void crearArbol(int iterations, SummaryNode* nodo, int indData, DataNode* T);
+        void borrarArbol(int iterations, SummaryNode* nodo);
 
     public:
         virtual int size() = 0;                      // Retorna la cantidad de elementos almacenados en el ListArr.
