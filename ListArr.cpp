@@ -26,6 +26,17 @@ void ListArr::borrarArbol(int iterations, SummaryNode* nodo){
     delete nodo;
 }
 
+void ListArr::MoveRight(int indice, DataNode* nodo){
+    if(nodo->n == nodo->N){
+        MoveRight(0, nodo->next);
+        nodo->next->array[0] = nodo->array[nodo->N-1];
+        nodo->n--;
+    }
+    for(int i=0 ; i<nodo->n-indice ; i++){
+        nodo->array[nodo->n-i] = nodo->array[nodo->n-i-1];
+    }
+}
+
 ListArr::ListArr(){
     DataNode* T = nullptr;
         int tamArr = 6;     // -BORRAR- tamanio de array por nodo.
@@ -51,22 +62,12 @@ bool ListArr::is_empty(){
     return false;
 }
 
-void ListArr::MoveRight(int indice, DataNode* nodo){
-    if(nodo->n == nodo->N){
-        MoveRight(0, nodo->next);
-        nodo->next->array[0] = nodo->array[nodo->N-1];
-        nodo->n--;
-    }
-    for(int i=0 ; i<nodo->n-indice ; i++){
-        nodo->array[nodo->n-i] = nodo->array[nodo->n-i-1];
-    }
-}
-
 void ListArr::insert_left(int data){
     int i = cantidadNodos;
     SummaryNode* sumnodo = root;
     while(i > 2){
         sumnodo = sumnodo->left;
+        i = i/2;
     }
     DataNode* datanodo = sumnodo->dataLeft;
     MoveRight(0, datanodo);
