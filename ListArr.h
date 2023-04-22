@@ -38,7 +38,7 @@ class ListArr{
         void MoveRight(int indice, DataNode* nodo);
         void ActSummaryNode(int iterations, SummaryNode* nodo);
         void insertInDataNode(int iterations, int indice, int data, SummaryNode* nodo);
-
+        DataNode* getFirstDataNode();
     public:
         int size();                      // Retorna la cantidad de elementos almacenados en el ListArr.
         bool is_empty();                 // Retorna true si ListArr esta vacia, caso contrario, false.
