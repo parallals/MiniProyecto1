@@ -19,12 +19,11 @@ void ListArr::borrarArbol(int iterations, SummaryNode* nodo){
     if(iterations > 2){
         borrarArbol(iterations/2, nodo->left);
         borrarArbol(iterations/2, nodo->right);
-        delete nodo;
     } else {
         delete nodo->dataLeft;
         delete nodo->dataRight;
-        delete nodo;
     }
+    delete nodo;
 }
 
 ListArr::ListArr(){
@@ -38,5 +37,16 @@ ListArr::ListArr(){
 
 ListArr::~ListArr(){
     borrarArbol(cantidadNodos, root);
+}
+
+int ListArr::size(){
+    return root->n;
+}
+
+bool ListArr::isEmpty(){
+    if(root->n == 0){
+        return true;
+    }
+    return false;
 }
 
