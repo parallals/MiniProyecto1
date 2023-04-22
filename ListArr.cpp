@@ -105,8 +105,9 @@ void ListArr::insert_left(int data){
 }
 
 void ListArr::insert_right(int data){
-    int i = cantidadNodos; //cantidad de nodos = 8
+
     SummaryNode* sumnodo = root;
+    int i = sumnodo->N;; //cantidad de nodos = 8    
     while(i > 2){ 
         sumnodo = sumnodo->right;
         i = i/2; //llegar a la última rama
@@ -125,9 +126,37 @@ void ListArr::insert(int data, int i){
 }
 
 void ListArr::print(){
-
+    SummaryNode* sumnodo = root;
+    int i = sumnodo->N;;
+    while(i > 2){
+        sumnodo = sumnodo->left;
+        i = i/2;
+    }
+    DataNode* datanodo = sumnodo->dataLeft;
+    for(int i = 0; i<sumnodo->N;; ++i){
+        for(int j = 0; j<datanodo->n;++j){
+            cout<<" "<<datanodo->array[j];
+            }
+        datanodo = datanodo->next;
+    }
 }
 
 bool ListArr::find(int data){
- return true;
+
+    SummaryNode* sumnodo = root;
+    int i = sumnodo->N;
+    while(i > 2){
+        sumnodo = sumnodo->left;
+        i = i/2;
+    }
+    DataNode* datanodo = sumnodo->dataLeft;
+    for(int i = 0; i<sumnodo->N;; ++i){
+        for(int j = 0; j<datanodo->N;++j){
+            if(datanodo->array[j] == data){
+                return true;
+            }
+        }
+        datanodo = datanodo->next;
+    }
+    return false;
 }
