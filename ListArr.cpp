@@ -81,12 +81,33 @@ ListArr::DataNode* ListArr::getFirstDataNode(){
     return auxnodo->dataLeft;
 }
 
-ListArr::ListArr(int tamArr, int cantNod){
-    int pow = 2;
-    while(pow < cantNod){
-        pow = pow*2;
+void ListArr::resize(){
+    // Union de DataNodes
+    DataNode* T = nullptr;
+    for(int i=0 ; i<cantNodos ; i++){
+        T = new DataNode(tamArr, T) ;
     }
-    this->cantNodos = pow;
+    SummaryNode* LastNode = root;
+    int i = cantNodos;
+    while(i > 2){
+        LastNode = LastNode->right;
+        i = i/2;
+    }
+    LastNode->dataRight = T;
+    // Creacion de arbol Derecho y union en root
+    SummaryNode* left = root;
+    SummaryNode* right = new SummaryNode(tamArr*cantNodos);
+    crearArbol(cantNodos, right, T, tamArr);
+    root->left = left;
+    root->right = right;
+    root->n = right->n + left->n;
+    root->N = right->N + left->N;
+    cantNodos = cantNodos*2;
+}
+
+ListArr::ListArr(int tamArr){
+    this->tamArr = tamArr;
+    cantNodos = 4;
     DataNode* T = nullptr;
     for(int i=0 ; i<cantNodos ; i++){
         T = new DataNode(tamArr, T) ;
@@ -111,27 +132,27 @@ bool ListArr::is_empty(){
 }
 
 void ListArr::insert_left(int data){
-    if(root->n < root->N){
-        insertInDataNode(cantNodos, 0, data, root);
-        ActSummaryNode(cantNodos, root);
+    if(root->n >= root->N){
+        resize();
     }
-    // Tirar Excepcion.
+    insertInDataNode(cantNodos, 0, data, root);
+    ActSummaryNode(cantNodos, root);
 }
 
 void ListArr::insert_right(int data){
-    if(root->n < root->N){
-        insertInDataNode(cantNodos, root->n, data, root);
-        ActSummaryNode(cantNodos, root);
+    if(root->n >= root->N){
+        resize();
     }
-    // Tirar Excepcion.
+    insertInDataNode(cantNodos, root->n, data, root);
+    ActSummaryNode(cantNodos, root);
 }
 
 void ListArr::insert(int data, int i){
-    if(root->n < root->N){
-        insertInDataNode(cantNodos, i, data, root);
-        ActSummaryNode(cantNodos, root);
+    if(root->n >= root->N){
+        resize();
     }
-    // Tirar Excepcion.
+    insertInDataNode(cantNodos, i, data, root);
+    ActSummaryNode(cantNodos, root);
 }
 
 void ListArr::print(){
