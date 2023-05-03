@@ -34,8 +34,10 @@ class ListArr : public ListArrADT{
         SummaryNode* root;
         int cantNodos;
         static int tamArr;
-        void crearArbol(int iterations, SummaryNode* nodo, DataNode* T, int tamArr);
-        void borrarArbol(int iterations, SummaryNode* nodo);
+        
+        void crearArbol(int cantNod, SummaryNode* nodo, DataNode* T);
+        void borrarArbol(SummaryNode* nodo);
+        void borrarTodo(SummaryNode* nodo);
         void MoveRight(int indice, DataNode* nodo);
         void ActSummaryNode(int iterations, SummaryNode* nodo);
         void insertInDataNode(int iterations, int indice, int data, SummaryNode* nodo);
@@ -53,7 +55,7 @@ class ListArr : public ListArrADT{
         void insert(int data, int i);     /* Inserta un nuevo valor data en el índice i del ListArr. */
         void print();                     /* Imprime por pantalla todos los valores almacenados en el ListArr. */
         bool find(int data);              /* Busca en el ListArr si el valor data se encuentra almacenado. */
-        ListArr(int tamArr); /* Contructor de ListArr, tamArr es equivalente al tamanio de los arreglos
+        ListArr(int tamArr);              /* Contructor de ListArr, tamArr es equivalente al tamanio de los arreglos
                                              y cantNod cantidad de nodos de la lista, considerar la capacidad de
                                              ListArr equivalente a tamArr*cantNod */
         ~ListArr();                       /* Destructor de ListArr */

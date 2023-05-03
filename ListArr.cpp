@@ -1,29 +1,47 @@
 #include "ListArr.h"
 #include <iostream>
 
-void ListArr::crearArbol(int iterations, SummaryNode* nodo, DataNode* T, int tamArr){
-    if(iterations > 2){
-        nodo->left = new SummaryNode(iterations*tamArr/2);
-        nodo->right = new SummaryNode(iterations*tamArr/2);
-        crearArbol(iterations/2, nodo->left, T, tamArr);
-        for(int i=0 ; i<iterations/2 ; i++){
-            T = T->next;
-        }
-        crearArbol(iterations/2, nodo->right, T, tamArr);
-    } else {
+void ListArr::crearArbol(int cantNod, SummaryNode* nodo, DataNode* T){
+    int nLeft = cantNod - cantNod/2;
+    if(nLeft > 2){
+        nodo->left = new SummaryNode(nLeft*tamArr);
+        crearArbol(nLeft, nodo->left, T);
+    }else if(nLeft == 2){
         nodo->dataLeft = T;
         nodo->dataRight = T->next;
+    }else if(nLeft == 1){
+        nodo->dataLeft = T;
+    }
+    int nRight = cantNod/2;
+    if(nRight > 2){
+        nodo->right = new SummaryNode(nRight*tamArr);
+        for(int i=0 ; i<nRight ; i++){
+            T = T->next;
+        }
+        crearArbol(nRight, nodo->right, T);
+    }else if(nRight == 2){
+        nodo->dataLeft = T;
+        nodo->dataRight = T->next;
+    }else if(nRight == 1){
+        nodo->dataLeft = T;
     }
 }
 
-void ListArr::borrarArbol(int iterations, SummaryNode* nodo){
-    if(iterations > 2){
-        borrarArbol(iterations/2, nodo->left);
-        borrarArbol(iterations/2, nodo->right);
-    } else {
+void ListArr::borrarArbol(SummaryNode* nodo){
+    if(nodo->left != nullptr) borrarArbol(nodo->left);
+    if(nodo->right != nullptr) borrarArbol(nodo->right);
+    delete nodo;
+}
+
+void ListArr::borrarTodo(SummaryNode* nodo){
+    if(nodo->left != nullptr) borrarTodo(nodo->left);
+    if(nodo->right != nullptr) borrarTodo(nodo->right);
+    if(nodo->dataLeft != nullptr){
         delete[] nodo->dataLeft->array;
-        delete[] nodo->dataRight->array;
         delete nodo->dataLeft;
+    }
+    if(nodo->dataRight != nullptr){
+        delete[] nodo->dataRight->array;
         delete nodo->dataRight;
     }
     delete nodo;
@@ -73,51 +91,30 @@ void ListArr::insertInDataNode(int iterations, int indice, int data, SummaryNode
 
 ListArr::DataNode* ListArr::getFirstDataNode(){
     SummaryNode* auxnodo = root;
-    int i = cantNodos;
-    while(i > 2){
+    while(auxnodo->dataLeft == nullptr){
         auxnodo = auxnodo->left;
-        i = i/2;
     }
     return auxnodo->dataLeft;
 }
 
 void ListArr::resize(){
-    // Union de DataNodes
-    DataNode* T = nullptr;
-    for(int i=0 ; i<cantNodos ; i++){
-        T = new DataNode(tamArr, T) ;
-    }
-    SummaryNode* LastNode = root;
-    int i = cantNodos;
-    while(i > 2){
-        LastNode = LastNode->right;
-        i = i/2;
-    }
-    LastNode->dataRight = T;
-    // Creacion de arbol Derecho y union en root
-    SummaryNode* left = root;
-    SummaryNode* right = new SummaryNode(tamArr*cantNodos);
-    crearArbol(cantNodos, right, T, tamArr);
-    root->left = left;
-    root->right = right;
-    root->n = right->n + left->n;
-    root->N = right->N + left->N;
-    cantNodos = cantNodos*2;
+    cantNodos++;
+    DataNode* T = getFirstDataNode();
+    borrarArbol(root);
+    root = new SummaryNode(cantNodos*tamArr);
+    crearArbol(cantNodos, root, T);
 }
 
 ListArr::ListArr(int tamArr){
     this->tamArr = tamArr;
-    cantNodos = 4;
-    DataNode* T = nullptr;
-    for(int i=0 ; i<cantNodos ; i++){
-        T = new DataNode(tamArr, T) ;
-    }
+    cantNodos = 1;
+    DataNode* T = new DataNode(tamArr, T) ;
     root = new SummaryNode(cantNodos*tamArr);
-    crearArbol(cantNodos, root, T, tamArr);
+    crearArbol(cantNodos, root, T);
 }
 
 ListArr::~ListArr(){
-    borrarArbol(cantNodos, root);
+    borrarTodo(root);
 }
 
 int ListArr::size(){
