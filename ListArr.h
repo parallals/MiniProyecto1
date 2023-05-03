@@ -1,7 +1,7 @@
-#ifndef ListArr_H
-#define ListArr_H
+#include "ListArrADT.h"
 
-class ListArr{
+class ListArr : public ListArrADT{
+
     private:
         struct DataNode{
             int N;
@@ -39,6 +39,7 @@ class ListArr{
         void ActSummaryNode(int iterations, SummaryNode* nodo);
         void insertInDataNode(int iterations, int indice, int data, SummaryNode* nodo);
         DataNode* getFirstDataNode();
+        
     public:
         int size();                       /* Retorna la cantidad de elementos almacenados en el ListArr. */
         bool is_empty();                  /* Retorna true si ListArr esta vacia, caso contrario, false. */
@@ -54,4 +55,3 @@ class ListArr{
                                              ListArr equivalente a tamArr*cantNod */
         ~ListArr();                       /* Destructor de ListArr */
 };
-#endif
