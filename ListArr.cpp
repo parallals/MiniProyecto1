@@ -28,9 +28,14 @@ void ListArr::crearArbol(int cantNod, SummaryNode* nodo, DataNode* T){
 }
 
 void ListArr::borrarArbol(SummaryNode* nodo){
-    if(nodo->left != nullptr) borrarArbol(nodo->left);
-    if(nodo->right != nullptr) borrarArbol(nodo->right);
+    if(nodo->left != nullptr){
+        borrarArbol(nodo->left);
+    }    
+    if(nodo->right != nullptr){
+        borrarArbol(nodo->right);
+    }
     delete nodo;
+    std::cout << ":c" << std::endl;
 }
 
 void ListArr::borrarTodo(SummaryNode* nodo){
@@ -180,11 +185,8 @@ void ListArr::resize(){
     cantNodos++;
     DataNode* T = getFirstDataNode();
     borrarArbol(root);
-    
-    std::cout << ":c" << std::endl;
     root = new SummaryNode(cantNodos*tamArr);
     crearArbol(cantNodos, root, T);
-    std::cout << ":c" << std::endl;
 }
 
 ListArr::ListArr(int tamArr){
