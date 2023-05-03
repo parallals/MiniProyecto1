@@ -15,7 +15,7 @@ void ListArr::crearArbol(int cantNod, SummaryNode* nodo, DataNode* T){
     int nRight = cantNod/2;
     if(nRight > 2){
         nodo->right = new SummaryNode(nRight*tamArr);
-        for(int i=0 ; i<nRight ; i++){
+        for(int i=0 ; i<nLeft ; i++){
             T = T->next;
         }
         crearArbol(nRight, nodo->right, T);
@@ -129,9 +129,6 @@ bool ListArr::is_empty(){
 }
 
 void ListArr::insert_left(int data){
-    if(root->n >= root->N){
-        resize();
-    }
     insertInDataNode(cantNodos, 0, data, root);
     ActSummaryNode(cantNodos, root);
 }
