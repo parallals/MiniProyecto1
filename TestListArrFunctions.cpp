@@ -4,13 +4,14 @@
 using namespace std;
 
 int main(){
-    ListArr* list1 = new ListArr(6, 8);
+    ListArr* list1 = new ListArr(6);
 
     if(list1->is_empty() == false) cout << "No vacio" << endl;
     else cout << "Vacio" << endl;
     
     for(int i=0 ; i<8 ; i++){
         list1->insert_left(i+1);
+        cout << i+1 << endl;
     }
     for(int i=0 ; i<8 ; i++){
         list1->insert_left(i+10);

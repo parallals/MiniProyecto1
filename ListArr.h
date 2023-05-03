@@ -33,7 +33,7 @@ class ListArr : public ListArrADT{
         };
         SummaryNode* root;
         int cantNodos;
-        static int tamArr;
+        int tamArr;
         
         void crearArbol(int cantNod, SummaryNode* nodo, DataNode* T);
         void borrarArbol(SummaryNode* nodo);

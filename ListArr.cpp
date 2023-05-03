@@ -59,32 +59,111 @@ void ListArr::MoveRight(int indice, DataNode* nodo){
     }
 }
 
-void ListArr::ActSummaryNode(int iterations, SummaryNode* nodo){
-    if(iterations > 2){
-        ActSummaryNode(iterations/2, nodo->left);
-        ActSummaryNode(iterations/2, nodo->right);
+void ListArr::ActSummaryNode(int cantNod, SummaryNode* nodo){
+    if(cantNod > 3){
+        ActSummaryNode(cantNod-cantNod/2, nodo->left);
+        ActSummaryNode(cantNod/2, nodo->right);
         nodo->n = nodo->left->n + nodo->right->n;
-    } else {
+    } else if(cantNod == 3){
+        ActSummaryNode(cantNod-cantNod/2, nodo->left);
+        nodo->n = nodo->left->n + nodo->dataRight->n;
+    } else if(cantNod == 2){
         nodo->n = nodo->dataLeft->n + nodo->dataRight->n;
-    } 
+    } else {
+        nodo->n = nodo->dataLeft->n;
+    }
 }
 
-void ListArr::insertInDataNode(int iterations, int indice, int data, SummaryNode* nodo){
-    if(iterations > 2){
-        if(indice <= nodo->left->n){
-            return insertInDataNode(iterations/2, indice, data, nodo->left);
+void ListArr::insertInDataNode(int cantNod, int indice, int data, SummaryNode* nodo){
+    if(cantNod > 3){
+        if(indice < nodo->left->n){
+            return insertInDataNode(cantNod-cantNod/2, indice, data, nodo->left);
         } else {
-            return insertInDataNode(iterations/2, indice-nodo->left->n, data, nodo->right);
+            return insertInDataNode(cantNod/2, indice-nodo->left->n, data, nodo->right);
+        }
+    } else if(cantNod == 3){
+        if(indice < nodo->left->n){
+            return insertInDataNode(cantNod-cantNod/2, indice, data, nodo->left);
+        } else {
+            indice = indice-nodo->dataLeft->n;
+            if(nodo->dataRight->n < nodo->dataRight->N){
+                MoveRight(indice, nodo->dataRight);    
+                nodo->dataRight->array[indice] = data;
+                nodo->dataRight->n++;
+            } else {
+                DataNode* nuevo = new DataNode(tamArr, nodo->dataRight->next);
+                nodo->dataRight = nuevo;
+                int aux = 1;
+                for(int i=indice ; i<=tamArr ; i++){
+                    nuevo->array[aux] = nodo->dataRight->array[i];
+                    nodo->dataRight->n--;
+                    nuevo->n++;
+                    aux++;
+                }
+                nuevo->array[0] = data;
+                nuevo->n++;
+                resize();
+            } 
+        }
+    } else if(cantNod == 2){
+        if(indice < nodo->dataLeft->n){
+            if(nodo->dataLeft->n < nodo->dataLeft->N){
+                MoveRight(indice, nodo->dataLeft);    
+                nodo->dataLeft->array[indice] = data;
+                nodo->dataLeft->n++;
+            } else {
+                DataNode* nuevo = new DataNode(tamArr, nodo->dataLeft->next);
+                nodo->dataLeft = nuevo;
+                int aux = 1;
+                for(int i=indice ; i<=tamArr ; i++){
+                    nuevo->array[aux] = nodo->dataLeft->array[i];
+                    nodo->dataLeft->n--;
+                    nuevo->n++;
+                    aux++;
+                }
+                nuevo->array[0] = data;
+                nuevo->n++;
+                resize();
+            } 
+        } else {
+            indice = indice-nodo->dataLeft->n;
+            if(nodo->dataRight->n < nodo->dataRight->N){
+                MoveRight(indice, nodo->dataRight);    
+                nodo->dataRight->array[indice] = data;
+                nodo->dataRight->n++;
+            } else {
+                DataNode* nuevo = new DataNode(tamArr, nodo->dataRight->next);
+                nodo->dataRight = nuevo;
+                int aux = 1;
+                for(int i=indice ; i<=tamArr ; i++){
+                    nuevo->array[aux] = nodo->dataRight->array[i];
+                    nodo->dataRight->n--;
+                    nuevo->n++;
+                    aux++;
+                }
+                nuevo->array[0] = data;
+                nuevo->n++;
+                resize();
+            } 
         }
     } else {
-        if(indice <= nodo->dataLeft->n){
+        if(nodo->dataLeft->n < nodo->dataLeft->N){
             MoveRight(indice, nodo->dataLeft);    
             nodo->dataLeft->array[indice] = data;
             nodo->dataLeft->n++;
         } else {
-            MoveRight(indice-nodo->dataRight->n, nodo->dataRight);    
-            nodo->dataRight->array[indice-nodo->dataLeft->n] = data;
-            nodo->dataRight->n++;
+            DataNode* nuevo = new DataNode(tamArr, nodo->dataLeft->next);
+            nodo->dataLeft = nuevo;
+            int aux = 1;
+            for(int i=indice ; i<=tamArr ; i++){
+                nuevo->array[aux] = nodo->dataLeft->array[i];
+                nodo->dataLeft->n--;
+                nuevo->n++;
+                aux++;
+            }
+            nuevo->array[0] = data;
+            nuevo->n++;
+            resize();
         }
     }
 }
@@ -101,14 +180,17 @@ void ListArr::resize(){
     cantNodos++;
     DataNode* T = getFirstDataNode();
     borrarArbol(root);
+    
+    std::cout << ":c" << std::endl;
     root = new SummaryNode(cantNodos*tamArr);
     crearArbol(cantNodos, root, T);
+    std::cout << ":c" << std::endl;
 }
 
 ListArr::ListArr(int tamArr){
     this->tamArr = tamArr;
     cantNodos = 1;
-    DataNode* T = new DataNode(tamArr, T) ;
+    DataNode* T = new DataNode(tamArr, nullptr) ;
     root = new SummaryNode(cantNodos*tamArr);
     crearArbol(cantNodos, root, T);
 }
@@ -134,17 +216,11 @@ void ListArr::insert_left(int data){
 }
 
 void ListArr::insert_right(int data){
-    if(root->n >= root->N){
-        resize();
-    }
     insertInDataNode(cantNodos, root->n, data, root);
     ActSummaryNode(cantNodos, root);
 }
 
 void ListArr::insert(int data, int i){
-    if(root->n >= root->N){
-        resize();
-    }
     insertInDataNode(cantNodos, i, data, root);
     ActSummaryNode(cantNodos, root);
 }
