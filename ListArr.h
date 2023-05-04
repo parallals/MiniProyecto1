@@ -29,7 +29,7 @@ class ListArr : public ListArrADT{
                 left = nullptr;
                 dataLeft = nullptr;
                 dataRight = nullptr;
-            }            
+            }
         };
         SummaryNode* root;
         int cantNodos;

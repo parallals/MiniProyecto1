@@ -15,6 +15,7 @@ int main(){
     }
     for(int i=0 ; i<8 ; i++){
         list1->insert_left(i+10);
+        cout << i+10 << endl;
     }
     list1->insert(9 ,8);
     list1->insert_right(0);
