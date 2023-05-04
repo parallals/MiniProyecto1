@@ -40,7 +40,7 @@ class ListArr : public ListArrADT{
         void borrarTodo(SummaryNode* nodo);
         void MoveRight(int indice, DataNode* nodo);
         void ActSummaryNode(int iterations, SummaryNode* nodo);
-        void insertInDataNode(int iterations, int indice, int data, SummaryNode* nodo);
+        void insertInDataNode(int indice, int data, SummaryNode* nodo);
         DataNode* getFirstDataNode();
         void resize();
 
