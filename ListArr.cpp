@@ -22,11 +22,15 @@ void ListArr::crearArbol(int cantNod, SummaryNode* nodo, DataNode* T){
 }
 
 void ListArr::borrarArbol(SummaryNode* nodo){
-    if(nodo->left != nullptr) borrarArbol(nodo->left);
-    if(nodo->right != nullptr) borrarArbol(nodo->right);
-    std::cout << ":c" << std::endl;
+    if(nodo->left != nullptr){
+        std::cout << ":c" << std::endl;
+        borrarArbol(nodo->left);
+    } 
+    if(nodo->right != nullptr){
+        std::cout << ":c" << std::endl;
+        borrarArbol(nodo->right);
+    }
     delete nodo;
-    return;
 }
 
 void ListArr::borrarTodo(SummaryNode* nodo){
@@ -64,7 +68,7 @@ void ListArr::ActSummaryNode(int cantNod, SummaryNode* nodo){
     }
 }
 
-void ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
+bool ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
     if(nodo->left != nullptr){
         if(indice <= nodo->left->n){
             return insertInDataNode(indice, data, nodo->left);
@@ -78,6 +82,7 @@ void ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
                     MoveRight(indice, nodo->dataRight);    
                     nodo->dataRight->array[indice] = data;
                     nodo->dataRight->n++;
+                    return false;
                 } else {
                     DataNode* nuevo = new DataNode(tamArr, nodo->dataRight->next);
                     nodo->dataRight = nuevo;
@@ -90,7 +95,7 @@ void ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
                     }
                     nuevo->array[0] = data;
                     nuevo->n++;
-                    resize();
+                    return true;
                 } 
             }
         }
@@ -100,6 +105,7 @@ void ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
                 MoveRight(indice, nodo->dataLeft);    
                 nodo->dataLeft->array[indice] = data;
                 nodo->dataLeft->n++;
+                return false;
             } else {
                 DataNode* nuevoNodo = new DataNode(tamArr, nodo->dataLeft->next);
                 nodo->dataLeft = nuevoNodo;
@@ -112,7 +118,7 @@ void ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
                 }
                 nuevoNodo->array[0] = data;
                 nuevoNodo->n++;
-                resize();
+                return true;
             }
         } else {
             indice = indice - nodo->dataLeft->n;
@@ -120,6 +126,7 @@ void ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
                 MoveRight(indice, nodo->dataRight);    
                 nodo->dataRight->array[indice] = data;
                 nodo->dataRight->n++;
+                return false;
             } else {
                 DataNode* nuevo = new DataNode(tamArr, nodo->dataRight->next);
                 nodo->dataRight = nuevo;
@@ -132,7 +139,7 @@ void ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
                 }
                 nuevo->array[0] = data;
                 nuevo->n++;
-                resize();
+                return true;
             } 
         }
     }
@@ -179,7 +186,7 @@ bool ListArr::is_empty(){
 }
 
 void ListArr::insert_left(int data){
-    insertInDataNode(0, data, root);
+    if(insertInDataNode(0, data, root) == true) resize();
     ActSummaryNode(cantNodos, root);
 }
 
