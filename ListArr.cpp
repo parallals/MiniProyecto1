@@ -24,8 +24,8 @@ void ListArr::crearArbol(int cantNod, SummaryNode* nodo, DataNode* T){
 void ListArr::borrarArbol(SummaryNode* nodo){
     if(nodo->left != nullptr) borrarArbol(nodo->left);
     if(nodo->right != nullptr) borrarArbol(nodo->right);
-    delete nodo;
     std::cout << ":c" << std::endl;
+    delete nodo;
     return;
 }
 
@@ -66,7 +66,7 @@ void ListArr::ActSummaryNode(int cantNod, SummaryNode* nodo){
 
 void ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
     if(nodo->left != nullptr){
-        if(indice < nodo->left->n){
+        if(indice <= nodo->left->n){
             return insertInDataNode(indice, data, nodo->left);
         } else {
             indice = indice-nodo->left->n;
@@ -95,7 +95,7 @@ void ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
             }
         }
     } else {
-        if(indice < nodo->dataLeft->n){
+        if(indice <= nodo->dataLeft->n){
             if(nodo->dataLeft->n < nodo->dataLeft->N){
                 MoveRight(indice, nodo->dataLeft);    
                 nodo->dataLeft->array[indice] = data;
@@ -179,9 +179,7 @@ bool ListArr::is_empty(){
 }
 
 void ListArr::insert_left(int data){
-    std::cout << ":c" << std::endl;
     insertInDataNode(0, data, root);
-    std::cout << ":c" << std::endl;
     ActSummaryNode(cantNodos, root);
 }
 
