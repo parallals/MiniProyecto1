@@ -1,8 +1,6 @@
 #ifndef VectorADT_H
 #define VectorADT_H
 
-#include <iostream>
-#include <string.h>
 #include <limits.h>
 
 using namespace std;

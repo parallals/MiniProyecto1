@@ -11,7 +11,6 @@ int VectorList::at(int indice) {
 		}
 		return aux->data;
 	}
-	cout << "VectorList vacio, no se pudo retornar dato." << endl;
 	return INT_MIN;
 }
 

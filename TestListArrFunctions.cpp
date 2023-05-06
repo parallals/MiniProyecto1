@@ -9,15 +9,18 @@ int main(){
     if(list1->is_empty() == false) cout << "No vacio" << endl;
     else cout << "Vacio" << endl;
     
-    for(int i=0 ; i<10000 ; i++){
-        list1->insert_right(i+1);
+    for(int i=0 ; i<100 ; i++){
+        list1->insert_right(i);
     }
-    /*
-    for(int i=0 ; i<8 ; i++){
-        list1->insert_left(i+10);
-    list1->insert(9, 1);
-    list1->insert_right(0);
-    */
+
+    for(int i=0 ; i<100 ; i++){
+        list1->insert_left(i);
+    }
+
+    for(int i=0 ; i<100 ; i++){
+        list1->insert(i, 100);
+    }
+
     list1->print();
     cout << "tamanio:" << list1->size()<< endl;
     if(list1->is_empty() == false) cout << "No vacio" << endl;

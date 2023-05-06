@@ -31,7 +31,7 @@ int TestInsertRightListArr(int tamArray, int elementos){
 	return duration.count();
 }
 
-int TestFindListArr(ListArr* lista){
+int TestFindListArr(ListArr* &lista){
 	auto start = high_resolution_clock::now();
 	lista->find(6);
 	auto end = high_resolution_clock::now();
@@ -89,10 +89,14 @@ int TestInsertRightVectorList(int elementos){
 
 
 int main(){
-
+	cout<<"----------------------------------------------------------------------------------"<<endl;
+	cout<<"Todas los siguientes valores son el promedio de veinte veces el mismo experimento:"<<endl;
+	cout<<"----------------------------------------------------------------------------------"<<endl;
+	cout << endl;
 	cout<<"ListArr:"<<endl;
+	cout << endl;
 	cout<<"Tiempo insert_left()"<<endl;
-
+	cout << endl;
     int dur10k = 0; int dur100k = 0; int dur1M = 0 ; int dur10M = 0; int dur100M = 0;
 	cout<<"8 elementos por array"<<endl;
     for(int i = 0; i < 20 ; ++i){
@@ -107,7 +111,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;
-		
+	cout << endl;	
 	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	cout<<"64 elementos por array"<<endl;
     for(int i = 0; i < 20 ; ++i){
@@ -122,7 +126,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;
-
+	cout << endl;
 	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	cout<<"128 elementos por array"<<endl;
     for(int i = 0; i < 20 ; ++i){
@@ -137,7 +141,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;
-
+	cout << endl;
 	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	cout<<"512 elementos por array"<<endl;
     for(int i = 0; i < 20 ; ++i){
@@ -152,7 +156,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;
-
+	cout << endl;
 	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	cout<<"1024 elementos por array"<<endl;
     for(int i = 0; i < 20 ; ++i){
@@ -167,7 +171,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;
-
+	cout << endl;
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
@@ -175,7 +179,7 @@ int main(){
 	//////////////////////////////////////////////////////////////////////////////////////////
 
 	cout<<"Tiempo insert_right()"<<endl;
-
+	cout << endl;
     dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	cout<<"8 elementos por array"<<endl;
 	for(int i = 0; i < 20 ; ++i){
@@ -190,7 +194,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;	
-
+	cout << endl;
 	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 
 	cout<<"64 elementos por array"<<endl;
@@ -206,7 +210,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;	
-
+	cout << endl;
 	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	cout<<"128 elementos por array"<<endl;
 	for(int i = 0; i < 20 ; ++i){
@@ -221,7 +225,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;	
-
+	cout << endl;
 	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	cout<<"512 elementos por array"<<endl;
 	for(int i = 0; i < 20 ; ++i){
@@ -236,7 +240,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;	
-
+	cout << endl;
 	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	cout<<"1024 elementos por array"<<endl;
 	for(int i = 0; i < 20 ; ++i){
@@ -251,7 +255,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;	
-
+	cout << endl;
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
@@ -259,7 +263,7 @@ int main(){
 	//////////////////////////////////////////////////////////////////////////////////////////
 
 	cout<<"Tiempo find()"<<endl;
-
+	cout << endl;
 	cout<<"Para 8 elementos en array"<<endl;
     dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	ListArr* la1 = new ListArr(8);
@@ -293,7 +297,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;	
-
+	cout << endl;
 	cout<<"Para 64 elementos en array"<<endl;
     dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	delete la1, la2, la3, la4, la5;
@@ -328,7 +332,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;	
-
+	cout << endl;
 	cout<<"Para 512 elementos en array"<<endl;
     dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	delete la1, la2, la3, la4, la5;
@@ -363,7 +367,7 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;	
-
+	cout << endl;
 	cout<<"Para 1024 elementos en array"<<endl;
     dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
 	delete la1, la2, la3, la4, la5;
@@ -398,18 +402,19 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;
+	cout << endl;	
+	cout<<"----------------------------------------------------------------------------------"<<endl;
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////
 	cout << endl;
-
-	//////////////////////////////////////////////////////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////////////////
-
 	cout<<"VectorArray:"<<endl;
-
+	cout << endl;
 	cout<<"Tiempo insert(), equivalente a insert_left()"<<endl;
-    int dur10k = 0; int dur100k = 0; int dur1M = 0 ; int dur10M = 0; int dur100M = 0;
+    dur10k = 0; dur100k = 0; dur1M = 0 ; dur10M = 0; dur100M = 0;
     for(int i = 0; i < 20 ; ++i){
     	dur10k = dur10k + TestInsertLeftVectorArray(10000);
     	dur100k = dur100k + TestInsertLeftVectorArray(100000);
@@ -422,9 +427,9 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;
-		
+	cout << endl;		
 	cout<<"Tiempo insertAt(), usado como insert_right()"<<endl;
-    int dur10k = 0; int dur100k = 0; int dur1M = 0 ; int dur10M = 0; int dur100M = 0;
+    dur10k = 0; dur100k = 0; dur1M = 0 ; dur10M = 0; dur100M = 0;
     for(int i = 0; i < 20 ; ++i){
     	dur10k = dur10k + TestInsertRightVectorArray(10000);
     	dur100k = dur100k + TestInsertRightVectorArray(100000);
@@ -438,16 +443,17 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;
 	cout << endl;
+	cout<<"---------------------------------------------------------------------------------"<<endl;
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
-
+	cout << endl;
 	cout<<"VectorList:"<<endl;
-
+	cout << endl;
 	cout<<"Tiempo insert(), equivalente a insert_left()"<<endl;
-    int dur10k = 0; int dur100k = 0; int dur1M = 0 ; int dur10M = 0; int dur100M = 0;
+    dur10k = 0; dur100k = 0; dur1M = 0 ; dur10M = 0; dur100M = 0;
     for(int i = 0; i < 20 ; ++i){
     	dur10k = dur10k + TestInsertLeftVectorList(10000);
     	dur100k = dur100k + TestInsertLeftVectorList(100000);
@@ -460,9 +466,9 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;
-		
+	cout << endl;		
 	cout<<"Tiempo insertAt(), usado como insert_right()"<<endl;
-    int dur10k = 0; int dur100k = 0; int dur1M = 0 ; int dur10M = 0; int dur100M = 0;
+    dur10k = 0; dur100k = 0; dur1M = 0 ; dur10M = 0; dur100M = 0;
     for(int i = 0; i < 20 ; ++i){
     	dur10k = dur10k + TestInsertRightVectorList(10000);
     	dur100k = dur100k + TestInsertRightVectorList(100000);
@@ -475,6 +481,8 @@ int main(){
 	cout<<"Tiempo promedio en ms con insercion de 1000000 elementos: "<<dur1M/20<<endl;	
 	cout<<"Tiempo promedio en ms con insercion de 10000000 elementos: "<<dur10M/20<<endl;
 	cout<<"Tiempo promedio en ms con insercion de 100000000 elementos: "<<dur100M/20<<endl;
+	cout << endl;	
+	cout<<"---------------------------------------------------------------------------------"<<endl;
 	return 0;
 }
-// g++ -o TimeTest TimeTest.cpp ListArr.cpp
+// g++ -o TimeTest TimeTest.cpp ListArr.cpp VectorList.cpp VectorArray.cpp

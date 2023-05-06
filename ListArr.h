@@ -52,7 +52,8 @@ class ListArr : public ListArrADT{
         void borrarTodo(SummaryNode* &nodo);
         void MoveRight(int indice, DataNode* nodo);
         void ActSummaryNode(int iterations, SummaryNode* nodo);
-        bool insertInDataNode(int indice, int data, SummaryNode* nodo);
+        bool insertInSummaryNode(int indice, int data, SummaryNode* nodo);
+        bool insertInDataNode(int indice, int data, DataNode* &nodo);
         DataNode* getFirstDataNode();
         void resize();
 

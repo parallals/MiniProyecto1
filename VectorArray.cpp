@@ -14,7 +14,6 @@ int VectorArray::at(int indice) {
 	if(n > 0){
 		return V[indice];
 	} 
-	cout << "VectorArray vacio, no se pudo retornar dato." << endl;
 	return INT_MIN;
 }
 
