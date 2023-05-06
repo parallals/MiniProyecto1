@@ -4,22 +4,20 @@
 using namespace std;
 
 int main(){
-    ListArr* list1 = new ListArr(6);
+    ListArr* list1 = new ListArr(10);
 
     if(list1->is_empty() == false) cout << "No vacio" << endl;
     else cout << "Vacio" << endl;
     
-    for(int i=0 ; i<8 ; i++){
-        list1->insert_left(i+1);
-        cout << i+1 << endl;
+    for(int i=0 ; i<10000 ; i++){
+        list1->insert_right(i+1);
     }
+    /*
     for(int i=0 ; i<8 ; i++){
         list1->insert_left(i+10);
-        cout << i+10 << endl;
-    }
-    list1->insert(9 ,8);
+    list1->insert(9, 1);
     list1->insert_right(0);
-
+    */
     list1->print();
     cout << "tamanio:" << list1->size()<< endl;
     if(list1->is_empty() == false) cout << "No vacio" << endl;

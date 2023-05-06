@@ -47,9 +47,9 @@ class ListArr : public ListArrADT{
         int cantNodos;
         int tamArr;
         
-        void crearArbol(int cantNod, SummaryNode* nodo, DataNode* T);
-        void borrarArbol(SummaryNode* nodo);
-        void borrarTodo(SummaryNode* nodo);
+        void crearArbol(int cantNod, SummaryNode* &nodo, DataNode* T);
+        void borrarArbol(SummaryNode* &nodo);
+        void borrarTodo(SummaryNode* &nodo);
         void MoveRight(int indice, DataNode* nodo);
         void ActSummaryNode(int iterations, SummaryNode* nodo);
         bool insertInDataNode(int indice, int data, SummaryNode* nodo);

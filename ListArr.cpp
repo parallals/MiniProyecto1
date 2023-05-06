@@ -1,7 +1,7 @@
 #include "ListArr.h"
 #include <iostream>
 
-void ListArr::crearArbol(int cantNod, SummaryNode* nodo, DataNode* T){
+void ListArr::crearArbol(int cantNod, SummaryNode* &nodo, DataNode* T){
     int nLeft = cantNod - cantNod/2;
     if(nLeft > 1){
         nodo->left = new SummaryNode(nLeft*tamArr);
@@ -21,18 +21,14 @@ void ListArr::crearArbol(int cantNod, SummaryNode* nodo, DataNode* T){
     }
 }
 
-void ListArr::borrarArbol(SummaryNode* nodo){
-    if(nodo->left != nullptr){
-        borrarArbol(nodo->left);
-    } 
-    if(nodo->right != nullptr){
-        borrarArbol(nodo->right);
-    }
-    return delete nodo;
-        std::cout << ":c" << std::endl;
+void ListArr::borrarArbol(SummaryNode* &nodo){
+    if(nodo == nullptr) return;
+    if(nodo->left != nullptr) borrarArbol(nodo->left);
+    if(nodo->right != nullptr) borrarArbol(nodo->right); 
+    delete nodo;
 }
 
-void ListArr::borrarTodo(SummaryNode* nodo){
+void ListArr::borrarTodo(SummaryNode* &nodo){
     if(nodo->left != nullptr) borrarTodo(nodo->left);
     if(nodo->right != nullptr) borrarTodo(nodo->right);
     if(nodo->dataLeft != nullptr) delete nodo->dataLeft;
@@ -57,13 +53,17 @@ void ListArr::ActSummaryNode(int cantNod, SummaryNode* nodo){
         ActSummaryNode(cantNod-cantNod/2, nodo->left);
         ActSummaryNode(cantNod/2, nodo->right);
         nodo->n = nodo->left->n + nodo->right->n;
+        return;
     } else if(cantNod == 3){
         ActSummaryNode(cantNod-cantNod/2, nodo->left);
         nodo->n = nodo->left->n + nodo->dataRight->n;
+        return;
     } else if(cantNod == 2){
         nodo->n = nodo->dataLeft->n + nodo->dataRight->n;
+        return;
     } else {
         nodo->n = nodo->dataLeft->n;
+        return;
     }
 }
 
@@ -72,11 +72,10 @@ bool ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
         if(indice <= nodo->left->n){
             return insertInDataNode(indice, data, nodo->left);
         } else {
-            indice = indice-nodo->left->n;
+            indice = indice - nodo->left->n;
             if(nodo->right != nullptr){
                 return insertInDataNode(indice, data, nodo->right);
             } else {
-                indice = indice - nodo->dataLeft->n;
                 if(nodo->dataRight->n < nodo->dataRight->N){
                     MoveRight(indice, nodo->dataRight);    
                     nodo->dataRight->array[indice] = data;
@@ -84,7 +83,7 @@ bool ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
                     return false;
                 } else {
                     DataNode* nuevo = new DataNode(tamArr, nodo->dataRight->next);
-                    nodo->dataRight = nuevo;
+                    nodo->dataRight->next = nuevo;
                     int aux = 1;
                     for(int i=indice ; i<=tamArr ; i++){
                         nuevo->array[aux] = nodo->dataRight->array[i];
@@ -106,17 +105,17 @@ bool ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
                 nodo->dataLeft->n++;
                 return false;
             } else {
-                DataNode* nuevoNodo = new DataNode(tamArr, nodo->dataLeft->next);
-                nodo->dataLeft = nuevoNodo;
+                DataNode* nuevo = new DataNode(tamArr, nodo->dataLeft->next);
+                nodo->dataLeft->next = nuevo;
                 int aux = 1;
                 for(int i=indice ; i<=tamArr ; i++){
-                    nuevoNodo->array[aux] = nodo->dataLeft->array[i];
+                    nuevo->array[aux] = nodo->dataLeft->array[i];
                     nodo->dataLeft->n--;
-                    nuevoNodo->n++;
+                    nuevo->n++;
                     aux++;
                 }
-                nuevoNodo->array[0] = data;
-                nuevoNodo->n++;
+                nuevo->array[0] = data;
+                nuevo->n++;
                 return true;
             }
         } else {
@@ -128,7 +127,7 @@ bool ListArr::insertInDataNode(int indice, int data, SummaryNode* nodo){
                 return false;
             } else {
                 DataNode* nuevo = new DataNode(tamArr, nodo->dataRight->next);
-                nodo->dataRight = nuevo;
+                nodo->dataRight->next = nuevo;
                 int aux = 1;
                 for(int i=indice ; i<=tamArr ; i++){
                     nuevo->array[aux] = nodo->dataRight->array[i];
@@ -162,9 +161,8 @@ void ListArr::resize(){
 
 ListArr::ListArr(int tamArr){
     this->tamArr = tamArr;
-    cantNodos = 3;
-    DataNode* T = nullptr;
-    for(int i=0 ; i<cantNodos ; i++) T = new DataNode(tamArr, T);
+    cantNodos = 1;
+    DataNode* T = new DataNode(tamArr, nullptr);
     root = new SummaryNode(cantNodos*tamArr);
     crearArbol(cantNodos, root, T);
 }
@@ -185,17 +183,30 @@ bool ListArr::is_empty(){
 }
 
 void ListArr::insert_left(int data){
-    if(insertInDataNode(0, data, root) == true) resize();
+    DataNode* nodo = getFirstDataNode();
+    if(nodo->n >= nodo->N){
+        DataNode* nuevo = new DataNode(tamArr, nodo);
+        cantNodos++;
+        borrarArbol(root);
+        root = new SummaryNode(cantNodos*tamArr);
+        crearArbol(cantNodos, root, nuevo);
+        nuevo->array[0] = data;
+        nuevo->n++;
+    } else {
+        MoveRight(0, nodo);    
+        nodo->array[0] = data;
+        nodo->n++;
+    }
     ActSummaryNode(cantNodos, root);
 }
 
 void ListArr::insert_right(int data){
-    insertInDataNode(root->n, data, root);
+    if(insertInDataNode(root->n, data, root)) resize();
     ActSummaryNode(cantNodos, root);
 }
 
 void ListArr::insert(int data, int i){
-    insertInDataNode(i, data, root);
+    if(insertInDataNode(i, data, root)) resize();
     ActSummaryNode(cantNodos, root);
 }
 
