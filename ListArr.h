@@ -3,33 +3,45 @@
 class ListArr : public ListArrADT{
 
     private:
-        struct DataNode{
-            int N;
-            int n;
-            int* array;
-            DataNode* next;
-            DataNode(int N, DataNode* next){
-                this->N = N;
-                n = 0;
-                array = new int[N];
-                this->next = next;
-            }
+        class DataNode{
+            public:
+                int N;
+                int n;
+                int* array;
+                DataNode* next;
+                DataNode(int N, DataNode* next){
+                    this->N = N;
+                    n = 0;
+                    array = new int[N];
+                    this->next = next;
+                }
+                ~DataNode(){
+                    delete[] array;
+                    next = nullptr;
+                }
         };
-        struct SummaryNode{
-            int N;
-            int n;
-            SummaryNode* right;
-            SummaryNode* left;
-            DataNode* dataLeft;
-            DataNode* dataRight;
-            SummaryNode(int N){
-                this->N = N;
-                n = 0;
-                right = nullptr;
-                left = nullptr;
-                dataLeft = nullptr;
-                dataRight = nullptr;
-            }
+        class SummaryNode{
+            public:
+                int N;
+                int n;
+                SummaryNode* right;
+                SummaryNode* left;
+                DataNode* dataLeft;
+                DataNode* dataRight;
+                SummaryNode(int N){
+                    this->N = N;
+                    n = 0;
+                    right = nullptr;
+                    left = nullptr;
+                    dataLeft = nullptr;
+                    dataRight = nullptr;
+                }
+                ~SummaryNode(){
+                    right = nullptr;
+                    left = nullptr;
+                    dataLeft = nullptr;
+                    dataRight = nullptr;
+                }
         };
         SummaryNode* root;
         int cantNodos;

@@ -23,14 +23,13 @@ void ListArr::crearArbol(int cantNod, SummaryNode* nodo, DataNode* T){
 
 void ListArr::borrarArbol(SummaryNode* nodo){
     if(nodo->left != nullptr){
-        std::cout << ":c" << std::endl;
         borrarArbol(nodo->left);
     } 
     if(nodo->right != nullptr){
-        std::cout << ":c" << std::endl;
         borrarArbol(nodo->right);
     }
-    delete nodo;
+    return delete nodo;
+        std::cout << ":c" << std::endl;
 }
 
 void ListArr::borrarTodo(SummaryNode* nodo){
