@@ -95,9 +95,9 @@ int main(){
 	cout << endl;
 	cout<<"ListArr:"<<endl;
 	cout << endl;
-	cout<<"Tiempos insert_left():"<<endl;
-	cout << endl;
     int dur1k = 0 ; int dur10k = 0 ; int dur100k = 0; int dur1M = 0 ;
+/*	cout<<"Tiempos insert_left():"<<endl;
+	cout << endl;
 	cout<<"Con capacidad de 8 elementos por Nodo de Datos:"<<endl;
     for(int i = 0; i < 20 ; ++i){
     	dur1k = dur1k + TestInsertLeftListArr(8, 1000);
@@ -169,7 +169,7 @@ int main(){
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 
-	cout<<"Tiempos insert_right():"<<endl;
+*/	cout<<"Tiempos insert_right():"<<endl;
 	cout << endl;
     dur1k = 0 ; dur10k = 0; dur100k = 0 ; dur1M = 0 ;
 	cout<<"Con capacidad de 8 elementos por Nodo de Datos:"<<endl;
@@ -237,6 +237,7 @@ int main(){
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
 	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
 	cout << endl;
+
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
@@ -372,10 +373,11 @@ int main(){
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
+
 	cout << endl;
 	cout<<"VectorArray:"<<endl;
 	cout << endl;
-	cout<<"Tiempos insert() (equivalente a insert_left()):"<<endl;
+/*	cout<<"Tiempos insert() (equivalente a insert_left()):"<<endl;
     dur1k = 0 ; dur10k = 0 ; dur100k = 0; dur1M = 0 ;
     for(int i = 0; i < 20 ; ++i){
     	dur1k = dur1k + TestInsertLeftVectorArray(1000);
@@ -388,7 +390,7 @@ int main(){
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
 	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;		
-	cout<<"Tiempos insertAt() (equivalente a insert_right()):"<<endl;
+*/	cout<<"Tiempos insertAt() (equivalente a insert_right()):"<<endl;
     dur1k = 0 ; dur10k = 0 ; dur100k = 0; dur1M = 0 ;
     for(int i = 0; i < 20 ; ++i){
     	dur1k = dur1k + TestInsertRightVectorArray(1000);
@@ -402,15 +404,17 @@ int main(){
 	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;
 	cout<<"---------------------------------------------------------------------------------"<<endl;
+
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
+
 	cout << endl;
 	cout<<"VectorList:"<<endl;
 	cout << endl;
-	cout<<"Tiempos insert(), equivalente a insert_left():"<<endl;
+/*	cout<<"Tiempos insert(), equivalente a insert_left():"<<endl;
     dur1k = 0 ; dur10k = 0 ; dur100k = 0; dur1M = 0 ;
     for(int i = 0; i < 20 ; ++i){
     	dur1k = dur1k + TestInsertLeftVectorList(1000);
@@ -423,7 +427,7 @@ int main(){
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
 	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;		
-	cout<<"Tiempos insertAt() (equivalente a insert_right()):"<<endl;
+*/	cout<<"Tiempos insertAt() (equivalente a insert_right()):"<<endl;
     dur1k = 0 ; dur10k = 0 ; dur100k = 0; dur1M = 0 ;
     for(int i = 0; i < 20 ; ++i){
     	dur1k = dur1k + TestInsertRightVectorList(1000);

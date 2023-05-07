@@ -164,7 +164,7 @@ void ListArr::insert_left(int data){
 }
 
 void ListArr::insert_right(int data){
-    if(insertInSummaryNode(root->n-1, data, root)){
+    if(insertInSummaryNode(root->n, data, root)){
         resize();
         ActSummaryNode(cantNodos, root);
     }
