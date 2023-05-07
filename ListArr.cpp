@@ -171,9 +171,9 @@ void ListArr::insert_right(int data){
 }
 
 void ListArr::insert(int data, int i){
-    if(i > root->n){
-        insert_right(data);
-    } else if(i < 1){
+    if(i>root->n || i<0){
+        throw "Indice incorrecto";
+    } else if(i == 0){
         insert_left(data);
     } else {
         if(insertInSummaryNode(i, data, root)){
