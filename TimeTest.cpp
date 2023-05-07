@@ -97,81 +97,72 @@ int main(){
 	cout << endl;
 	cout<<"Tiempos insert_left():"<<endl;
 	cout << endl;
-    int dur10k = 0; int dur100k = 0; int dur1M = 0 ; int dur10M = 0; int dur100M = 0;
+    int dur1k = 0 ; int dur10k = 0 ; int dur100k = 0; int dur1M = 0 ;
 	cout<<"Con capacidad de 8 elementos por Nodo de Datos:"<<endl;
     for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertLeftListArr(8, 1000);
     	dur10k = dur10k + TestInsertLeftListArr(8, 10000);
     	dur100k = dur100k + TestInsertLeftListArr(8, 100000);
     	dur1M = dur1M + TestInsertLeftListArr(8, 1000000);
-    	dur10M = dur10M + TestInsertLeftListArr(8, 10000000);
-    	dur100M = dur100M + TestInsertLeftListArr(8, 100000000);
 	}		
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
-	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;
+	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;	
-	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
+	dur1k = 0 ; dur10k = 0 ; dur100k = 0 ; dur1M = 0 ;
 	cout<<"Con capacidad de 64 elementos por Nodo de Datos:"<<endl;
     for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertLeftListArr(64, 1000);
     	dur10k = dur10k + TestInsertLeftListArr(64, 10000);
     	dur100k = dur100k + TestInsertLeftListArr(64, 100000);
     	dur1M = dur1M + TestInsertLeftListArr(64, 1000000);
-    	dur10M = dur10M + TestInsertLeftListArr(64, 10000000);
-    	dur100M = dur100M + TestInsertLeftListArr(64, 100000000);
 	}	
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
-	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;
+	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;
-	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
+	dur1k = 0 ; dur10k = 0 ; dur100k = 0 ; dur1M = 0 ;
 	cout<<"Con capacidad de 128 elementos por Nodo de Datos:"<<endl;
     for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertLeftListArr(128, 1000);
     	dur10k = dur10k + TestInsertLeftListArr(128, 10000);
     	dur100k = dur100k + TestInsertLeftListArr(128, 100000);
     	dur1M = dur1M + TestInsertLeftListArr(128, 1000000);
-    	dur10M = dur10M + TestInsertLeftListArr(128, 10000000);
-    	dur100M = dur100M + TestInsertLeftListArr(128, 100000000);
 	}	
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
 	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;
 	cout << endl;
-	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
+	dur1k = 0 ; dur10k = 0; dur100k = 0 ; dur1M = 0 ;
 	cout<<"Con capacidad de 512 elementos por Nodo de Datos:"<<endl;
     for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertLeftListArr(512, 1000);
     	dur10k = dur10k + TestInsertLeftListArr(512, 10000);
     	dur100k = dur100k + TestInsertLeftListArr(512, 100000);
     	dur1M = dur1M + TestInsertLeftListArr(512, 1000000);
-    	dur10M = dur10M + TestInsertLeftListArr(512, 10000000);
-    	dur100M = dur100M + TestInsertLeftListArr(512, 100000000);
 	}	
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
 	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;
 	cout << endl;
-	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
+	dur1k = 0 ; dur10k = 0; dur100k = 0 ; dur1M = 0 ;
 	cout<<"Con capacidad de 1024 elementos por Nodo de Datos:"<<endl;
     for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertLeftListArr(1024, 1000);
     	dur10k = dur10k + TestInsertLeftListArr(1024, 10000);
     	dur100k = dur100k + TestInsertLeftListArr(1024, 100000);
     	dur1M = dur1M + TestInsertLeftListArr(1024, 1000000);
-    	dur10M = dur10M + TestInsertLeftListArr(1024, 10000000);
-    	dur100M = dur100M + TestInsertLeftListArr(1024, 100000000);
 	}	
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
 	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;
 	cout << endl;
+
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
@@ -180,81 +171,71 @@ int main(){
 
 	cout<<"Tiempos insert_right():"<<endl;
 	cout << endl;
-    dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
+    dur1k = 0 ; dur10k = 0; dur100k = 0 ; dur1M = 0 ;
 	cout<<"Con capacidad de 8 elementos por Nodo de Datos:"<<endl;
 	for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertRightListArr(8, 1000);
     	dur10k = dur10k + TestInsertRightListArr(8, 10000);
     	dur100k = dur100k + TestInsertRightListArr(8, 100000);
     	dur1M = dur1M + TestInsertRightListArr(8, 1000000);
-    	dur10M = dur10M + TestInsertRightListArr(8, 10000000);
-    	dur100M = dur100M + TestInsertRightListArr(8, 100000000);
 	}
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
-	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;	
+	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;
-	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
+	dur1k = 0 ; dur10k = 0; dur100k = 0 ; dur1M = 0 ;
 
 	cout<<"Con capacidad de 64 elementos por Nodo de Datos"<<endl;
 	for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertRightListArr(64, 1000);
     	dur10k = dur10k + TestInsertRightListArr(64, 10000);
     	dur100k = dur100k + TestInsertRightListArr(64, 100000);
     	dur1M = dur1M + TestInsertRightListArr(64, 1000000);
-    	dur10M = dur10M + TestInsertRightListArr(64, 10000000);
-    	dur100M = dur100M + TestInsertRightListArr(64, 100000000);
 	}
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
 	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;	
 	cout << endl;
-	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
+	dur1k = 0 ; dur10k = 0; dur100k = 0 ; dur1M = 0 ;
 	cout<<"Con capacidad de 128 elementos por Nodo de Datos"<<endl;
 	for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertRightListArr(128, 1000);
     	dur10k = dur10k + TestInsertRightListArr(128, 10000);
     	dur100k = dur100k + TestInsertRightListArr(128, 100000);
     	dur1M = dur1M + TestInsertRightListArr(128, 1000000);
-    	dur10M = dur10M + TestInsertRightListArr(128, 10000000);
-    	dur100M = dur100M + TestInsertRightListArr(128, 100000000);
 	}
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
-	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;	
+	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;
-	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
+	dur1k = 0 ; dur10k = 0; dur100k = 0 ; dur1M = 0 ;
 	cout<<"Con capacidad de 512 elementos por Nodo de Datos:"<<endl;
 	for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertRightListArr(512, 1000);
     	dur10k = dur10k + TestInsertRightListArr(512, 10000);
     	dur100k = dur100k + TestInsertRightListArr(512, 100000);
     	dur1M = dur1M + TestInsertRightListArr(512, 1000000);
-    	dur10M = dur10M + TestInsertRightListArr(512, 10000000);
-    	dur100M = dur100M + TestInsertRightListArr(512, 100000000);
 	}
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
-	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;	
+	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;
-	dur10k = 0; dur100k = 0 ; dur1M = 0 ; dur10M = 0 ; dur100M = 0;
+	dur1k = 0 ; dur10k = 0; dur100k = 0 ; dur1M = 0 ;
 	cout<<"Con capacidad de 1024 elementos por Nodo de Datos:"<<endl;
 	for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertRightListArr(1024, 1000);
     	dur10k = dur10k + TestInsertRightListArr(1024, 10000);
     	dur100k = dur100k + TestInsertRightListArr(1024, 100000);
     	dur1M = dur1M + TestInsertRightListArr(1024, 1000000);
-    	dur10M = dur10M + TestInsertRightListArr(1024, 10000000);
-    	dur100M = dur100M + TestInsertRightListArr(1024, 100000000);
 	}
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
 	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;	
 	cout << endl;
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////
@@ -265,123 +246,124 @@ int main(){
 	cout<<"Tiempos find():"<<endl;
 	cout << endl;
 	cout<<"Con capacidad de 8 elementos por Nodo de Datos:"<<endl;
-    dur10k = 0 ; dur1M = 0 ; dur100M = 0;
+    dur1k = 0 ; dur10k = 0 ; dur100k = 0;
 	ListArr* la1 = new ListArr(8);
-	ListArr* la3 = new ListArr(8); 
-	ListArr* la5 = new ListArr(8);         
-	for(int i = 0; i<100000000 ; ++i){
+	ListArr* la2 = new ListArr(8); 
+	ListArr* la3 = new ListArr(8);         
+	for(int i = 0; i<100000 ; ++i){
+		if(i<1000){
+			la1->insert_left(7);
+		}
 		if(i<10000){
-			la1->insert_right(7);
+			la2->insert_left(7);
 		}
-		if(i<1000000){
-			la3->insert_right(7);
-		}
-		la5->insert_right(7);
+		la3->insert_left(7);
 	}
     for(int i = 0; i < 20 ; ++i){
-    	dur10k = dur10k + TestFindListArr(la1);
-		dur1M = dur1M + TestFindListArr(la3);
-		dur100M = dur100M + TestFindListArr(la5);
+    	dur1k = dur1k + TestFindListArr(la1);
+		dur10k = dur10k + TestFindListArr(la2);
+		dur100k = dur100k + TestFindListArr(la3);
 	}
+	cout << "Busqueda con 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Busqueda con 10000 elementos en ms: " << dur10k/20 << endl;
-	cout << "Busqueda con 1000000 elementos en ms: " << dur1M/20 << endl;
-	cout << "Busqueda con 100000000 elementos en ms: " << dur100M/20 << endl;	
+	cout << "Busqueda con 100000 elementos en ms: " << dur100k/20 << endl;	
 	cout << endl;
 	cout<<"Con capacidad de 64 elementos por Nodo de Datos:"<<endl;
-    dur10k = 0 ; dur1M = 0 ; dur100M = 0;
-	delete la1, la3, la5;
+    dur1k = 0 ; dur10k = 0 ; dur100k = 0;
+	delete la1, la2, la3;
 	la1 = new ListArr(64);
-	la3 = new ListArr(64);  
-	la5 = new ListArr(64);         
-	for(int i = 0; i<100000000 ; ++i){
+	la2 = new ListArr(64);  
+	la3 = new ListArr(64);         
+	for(int i = 0; i<100000 ; ++i){
+		if(i<1000){
+			la1->insert_left(7);
+		}
 		if(i<10000){
-			la1->insert_right(7);
+			la2->insert_left(7);
 		}
-		if(i<1000000){
-			la3->insert_right(7);
-		}
-		la5->insert_right(7);
+		la3->insert_left(7);
 	}
     for(int i = 0; i < 20 ; ++i){
-    	dur10k = dur10k + TestFindListArr(la1);
-		dur1M = dur1M + TestFindListArr(la3);
-		dur100M = dur100M + TestFindListArr(la5);
+    	dur1k = dur1k + TestFindListArr(la1);
+		dur10k = dur10k + TestFindListArr(la2);
+		dur100k = dur100k + TestFindListArr(la3);
 	}
+	cout << "Busqueda con 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Busqueda con 10000 elementos en ms: " << dur10k/20 << endl;
-	cout << "Busqueda con 1000000 elementos en ms: " << dur1M/20 << endl;
-	cout << "Busqueda con 100000000 elementos en ms: " << dur100M/20 << endl;	
+	cout << "Busqueda con 100000 elementos en ms: " << dur100k/20 << endl;	
 	cout << endl;
 	cout<<"Con capacidad de 124 elementos por Nodo de Datos:"<<endl;
-    dur10k = 0 ; dur1M = 0 ; dur100M = 0;
-	delete la1, la3, la5;
+    dur1k = 0 ; dur10k = 0 ; dur100k = 0;
+	delete la1, la2, la3;
 	la1 = new ListArr(124);
-	la3 = new ListArr(124);  
-	la5 = new ListArr(124);         
-	for(int i = 0; i<100000000 ; ++i){
+	la2 = new ListArr(124);  
+	la3 = new ListArr(124);         
+	for(int i = 0; i<100000 ; ++i){
+		if(i<1000){
+			la1->insert_left(7);
+		}
 		if(i<10000){
-			la1->insert_right(7);
+			la2->insert_left(7);
 		}
-		if(i<1000000){
-			la3->insert_right(7);
-		}
-		la5->insert_right(7);
+		la3->insert_left(7);
 	}
     for(int i = 0; i < 20 ; ++i){
-    	dur10k = dur10k + TestFindListArr(la1);
-		dur1M = dur1M + TestFindListArr(la3);
-		dur100M = dur100M + TestFindListArr(la5);
+    	dur1k = dur1k + TestFindListArr(la1);
+		dur10k = dur10k + TestFindListArr(la2);
+		dur100k = dur100k + TestFindListArr(la3);
 	}
+	cout << "Busqueda con 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Busqueda con 10000 elementos en ms: " << dur10k/20 << endl;
-	cout << "Busqueda con 1000000 elementos en ms: " << dur1M/20 << endl;
-	cout << "Busqueda con 100000000 elementos en ms: " << dur100M/20 << endl;	
+	cout << "Busqueda con 100000 elementos en ms: " << dur100k/20 << endl;	
 	cout << endl;
 	cout<<"Con capacidad de 512 elementos por Nodo de Datos:"<<endl;
-    dur10k = 0 ; dur1M = 0 ; dur100M = 0;
-	delete la1, la3, la5;
+    dur1k = 0 ; dur10k = 0 ; dur100k = 0;
+	delete la1, la2, la3;
 	la1 = new ListArr(512);
-	la3 = new ListArr(512);  
-	la5 = new ListArr(512);         
-	for(int i = 0; i<100000000 ; ++i){
+	la2 = new ListArr(512);  
+	la3 = new ListArr(512);         
+	for(int i = 0; i<100000 ; ++i){
+		if(i<1000){
+			la1->insert_left(7);
+		}
 		if(i<10000){
-			la1->insert_right(7);
+			la2->insert_left(7);
 		}
-		if(i<1000000){
-			la3->insert_right(7);
-		}
-		la5->insert_right(7);
+		la3->insert_left(7);
 	}
     for(int i = 0; i < 20 ; ++i){
-    	dur10k = dur10k + TestFindListArr(la1);
-		dur1M = dur1M + TestFindListArr(la3);
-		dur100M = dur100M + TestFindListArr(la5);
+    	dur1k = dur1k + TestFindListArr(la1);
+		dur10k = dur10k + TestFindListArr(la2);
+		dur100k = dur100k + TestFindListArr(la3);
 	}
+	cout << "Busqueda con 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Busqueda con 10000 elementos en ms: " << dur10k/20 << endl;
-	cout << "Busqueda con 1000000 elementos en ms: " << dur1M/20 << endl;
-	cout << "Busqueda con 100000000 elementos en ms: " << dur100M/20 << endl;	
+	cout << "Busqueda con 100000 elementos en ms: " << dur100k/20 << endl;	
 	cout << endl;
 	cout<<"Con capacidad de 1024 elementos por Nodo de Datos:"<<endl;
-    dur10k = 0 ; dur1M = 0 ; dur100M = 0;
+    dur1k = 0 ; dur10k = 0 ; dur100k = 0;
+	delete la1, la2, la3;
 	la1 = new ListArr(1024);
-	la3 = new ListArr(1024);   
-	la5 = new ListArr(1024);         
-	for(int i = 0; i<100000000 ; ++i){
+	la2 = new ListArr(1024);   
+	la3 = new ListArr(1024);         
+	for(int i = 0; i<100000 ; ++i){
+		if(i<1000){
+			la1->insert_left(7);
+		}
 		if(i<10000){
-			la1->insert_right(7);
+			la2->insert_left(7);
 		}
-		if(i<1000000){
-			la3->insert_right(7);
-		}
-		la5->insert_right(7);
+		la3->insert_left(7);
 	}
-    for(int i = 0; i < 20 ; ++i){
-    	dur10k = dur10k + TestFindListArr(la1);
-		dur1M = dur1M + TestFindListArr(la3);
-		dur100M = dur100M + TestFindListArr(la5);
-	delete la1, la3, la5;
+	for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestFindListArr(la1);
+		dur10k = dur10k + TestFindListArr(la2);
+		dur100k = dur100k + TestFindListArr(la3);
 	}
+	delete la1, la2, la3;
+	cout << "Busqueda con 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Busqueda con 10000 elementos en ms: " << dur10k/20 << endl;
-	cout << "Busqueda con 1000000 elementos en ms: " << dur1M/20 << endl;
-	cout << "Busqueda con 100000000 elementos en ms: " << dur100M/20 << endl;
+	cout << "Busqueda con 100000 elementos en ms: " << dur100k/20 << endl;	
 	cout << endl;	
 	cout<<"----------------------------------------------------------------------------------"<<endl;
 
@@ -394,34 +376,30 @@ int main(){
 	cout<<"VectorArray:"<<endl;
 	cout << endl;
 	cout<<"Tiempos insert() (equivalente a insert_left()):"<<endl;
-    dur10k = 0; dur100k = 0; dur1M = 0 ; dur10M = 0; dur100M = 0;
+    dur1k = 0 ; dur10k = 0 ; dur100k = 0; dur1M = 0 ;
     for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertLeftVectorArray(1000);
     	dur10k = dur10k + TestInsertLeftVectorArray(10000);
     	dur100k = dur100k + TestInsertLeftVectorArray(100000);
     	dur1M = dur1M + TestInsertLeftVectorArray(1000000);
-    	dur10M = dur10M + TestInsertLeftVectorArray(10000000);
-    	dur100M = dur100M + TestInsertLeftVectorArray(100000000);
 	}		
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
-	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;
+	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;		
 	cout<<"Tiempos insertAt() (equivalente a insert_right()):"<<endl;
-    dur10k = 0; dur100k = 0; dur1M = 0 ; dur10M = 0; dur100M = 0;
+    dur1k = 0 ; dur10k = 0 ; dur100k = 0; dur1M = 0 ;
     for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertRightVectorArray(1000);
     	dur10k = dur10k + TestInsertRightVectorArray(10000);
     	dur100k = dur100k + TestInsertRightVectorArray(100000);
     	dur1M = dur1M + TestInsertRightVectorArray(1000000);
-    	dur10M = dur10M + TestInsertRightVectorArray(10000000);
-    	dur100M = dur100M + TestInsertRightVectorArray(100000000);
 	}		
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
-	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;
+	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;
 	cout<<"---------------------------------------------------------------------------------"<<endl;
 	//////////////////////////////////////////////////////////////////////////////////////////
@@ -433,34 +411,30 @@ int main(){
 	cout<<"VectorList:"<<endl;
 	cout << endl;
 	cout<<"Tiempos insert(), equivalente a insert_left():"<<endl;
-    dur10k = 0; dur100k = 0; dur1M = 0 ; dur10M = 0; dur100M = 0;
+    dur1k = 0 ; dur10k = 0 ; dur100k = 0; dur1M = 0 ;
     for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertLeftVectorList(1000);
     	dur10k = dur10k + TestInsertLeftVectorList(10000);
     	dur100k = dur100k + TestInsertLeftVectorList(100000);
     	dur1M = dur1M + TestInsertLeftVectorList(1000000);
-    	dur10M = dur10M + TestInsertLeftVectorList(10000000);
-    	dur100M = dur100M + TestInsertLeftVectorList(100000000);
 	}		
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
-	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;
+	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;		
 	cout<<"Tiempos insertAt() (equivalente a insert_right()):"<<endl;
-    dur10k = 0; dur100k = 0; dur1M = 0 ; dur10M = 0; dur100M = 0;
+    dur1k = 0 ; dur10k = 0 ; dur100k = 0; dur1M = 0 ;
     for(int i = 0; i < 20 ; ++i){
+    	dur1k = dur1k + TestInsertRightVectorList(1000);
     	dur10k = dur10k + TestInsertRightVectorList(10000);
     	dur100k = dur100k + TestInsertRightVectorList(100000);
     	dur1M = dur1M + TestInsertRightVectorList(1000000);
-    	dur10M = dur10M + TestInsertRightVectorList(10000000);
-    	dur100M = dur100M + TestInsertRightVectorList(100000000);
 	}		
+	cout << "Insercion de 1000 elementos en ms: " << dur1k/20 << endl;
 	cout << "Insercion de 10000 elementos en ms: " << dur10k/20 << endl;
 	cout << "Insercion de 100000 elementos en ms: " << dur100k/20 << endl;
-	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;	
-	cout << "Insercion de 10000000 elementos en ms: " << dur10M/20 << endl;
-	cout << "Insercion de 100000000 elementos en ms: " << dur100M/20 << endl;
+	cout << "Insercion de 1000000 elementos en ms: " << dur1M/20 << endl;
 	cout << endl;	
 	cout<<"---------------------------------------------------------------------------------"<<endl;
 	return 0;
