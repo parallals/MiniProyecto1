@@ -44,6 +44,7 @@ class ListArr : public ListArrADT{
                 }
         };
         SummaryNode* root;
+        DataNode* Top;
         int cantNodos;
         int tamArr;
         
@@ -51,10 +52,8 @@ class ListArr : public ListArrADT{
         void borrarArbol(SummaryNode* &nodo);
         void borrarTodo(SummaryNode* &nodo);
         void MoveRight(int indice, DataNode* nodo);
-        void ActSummaryNode(int iterations, SummaryNode* nodo);
         bool insertInSummaryNode(int indice, int data, SummaryNode* nodo);
         bool insertInDataNode(int indice, int data, DataNode* &nodo);
-        DataNode* getFirstDataNode();
         void resize();
 
         
