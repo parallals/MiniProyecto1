@@ -172,7 +172,7 @@ void ListArr::print(){
         nodo = nodo->next;
     }
 }
-
+ 
 bool ListArr::find(int data){
     DataNode* nodo = Top;
     for(int i = 0; i<cantNodos ; ++i){
